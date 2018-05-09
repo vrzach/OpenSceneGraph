@@ -680,6 +680,10 @@ void GraphicsContext::removeAllOperations()
     _operationsBlock->set(false);
 }
 
+// [ADD FRANK]
+bool	GraphicsContext::_enterStereoLoop = false;
+int		GraphicsContext::_stereoCamera = 2;
+// [END FRANK]
 void GraphicsContext::runOperations()
 {
     // sort the cameras into order
@@ -688,6 +692,10 @@ void GraphicsContext::runOperations()
     std::copy(_cameras.begin(), _cameras.end(), std::back_inserter(camerasCopy));
     std::sort(camerasCopy.begin(), camerasCopy.end(), CameraRenderOrderSortOp());
 
+	// [ADD FRANK]
+	_enterStereoLoop = true;
+	// [END FRANK]
+
     for(CameraVector::iterator itr = camerasCopy.begin();
         itr != camerasCopy.end();
         ++itr)
@@ -695,6 +703,10 @@ void GraphicsContext::runOperations()
         osg::Camera* camera = *itr;
         if (camera->getRenderer()) (*(camera->getRenderer()))(this);
     }
+
+	// [ADD FRANK]
+	_enterStereoLoop = false;
+	// [END FRANK]
 
     for(GraphicsOperationQueue::iterator itr = _operations.begin();
         itr != _operations.end();

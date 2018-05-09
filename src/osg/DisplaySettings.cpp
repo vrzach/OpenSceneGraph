@@ -129,6 +129,13 @@ void DisplaySettings::setDisplaySettings(const DisplaySettings& vs)
     _OSXMenubarBehavior = vs._OSXMenubarBehavior;
 
     _syncSwapBuffers = vs._syncSwapBuffers;
+
+	// [ADD FRANK]
+	_LeftEyeScaleWidth = 1.0;
+	_LeftEyeScaleHeight = 1.0;
+	_RightEyeScaleWidth = 1.0;
+	_RightEyeScaleHeight = 1.0;
+	// [END FRANK]
 }
 
 void DisplaySettings::merge(const DisplaySettings& vs)

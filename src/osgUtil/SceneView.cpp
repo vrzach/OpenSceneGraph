@@ -30,6 +30,13 @@
 
 #include <iterator>
 
+// [ADD FRANK]
+#include <osg/Texture2D>
+#include <osg/Image>
+#include <osg/GraphicsContext>
+bool osgUtil::SceneView::_stereoSlice = false;
+// [END FRANK]
+
 using namespace osg;
 using namespace osgUtil;
 
@@ -142,6 +149,10 @@ SceneView::SceneView(DisplaySettings* ds)
     _dynamicObjectCount = 0;
 
     _resetColorMaskToAllEnabled = true;
+
+	// [ADD FRANK]
+	resetStereo();
+	// [END FRANK]
 }
 
 SceneView::SceneView(const SceneView& rhs, const osg::CopyOp& copyop):
@@ -179,6 +190,10 @@ SceneView::SceneView(const SceneView& rhs, const osg::CopyOp& copyop):
     _dynamicObjectCount = 0;
 
     _resetColorMaskToAllEnabled = rhs._resetColorMaskToAllEnabled;
+
+	// [ADD FRANK]
+	resetStereo();
+	// [END FRANK]
 }
 
 SceneView::~SceneView()
@@ -190,7 +205,11 @@ void SceneView::setDefaults(unsigned int options)
 {
     osg::CullSettings::setDefaults();
 
-    _camera->getProjectionMatrix().makePerspective(50.0f,1.4f,1.0f,10000.0f);
+	// [ADD FRANK]
+	//_camera->getProjectionMatrix().makePerspective(50.0f,1.4f,1.0f,10000.0f); // Original values
+	_camera->getProjectionMatrix().makePerspective(20.0f,1.4f,1.0f,10000.0f);  // Modified values
+	// [END FRANK]
+
     _camera->getViewMatrix().makeIdentity();
 
     if (!_globalStateSet) _globalStateSet = new osg::StateSet;
@@ -420,7 +439,51 @@ void SceneView::updateUniforms()
 
 osg::Matrixd SceneView::computeLeftEyeProjectionImplementation(const osg::Matrixd& projection) const
 {
-    return _displaySettings.valid() ? _displaySettings->computeLeftEyeProjectionImplementation(projection) : projection;
+	// [ADD FRANK]
+	double iod = _displaySettings->getEyeSeparation();
+	double sd = _displaySettings->getScreenDistance();
+	double scale_x = 1.0;
+	double scale_y = 1.0;
+
+	if (_displaySettings->getSplitStereoAutoAdjustAspectRatio())
+	{
+		switch (_displaySettings->getStereoMode())
+		{
+		case(osg::DisplaySettings::HORIZONTAL_SPLIT):
+			scale_x = 2.0;
+			break;
+		case(osg::DisplaySettings::VERTICAL_SPLIT):
+			scale_y = 2.0;
+			break;
+		default:
+			break;
+		}
+	}
+	else
+	{
+		scale_x = _displaySettings->getLeftEyeScaleWidth();
+		scale_y = _displaySettings->getLeftEyeScaleHeight();
+	}
+
+	if (_displaySettings->getDisplayType() == osg::DisplaySettings::HEAD_MOUNTED_DISPLAY)
+	{
+		// head mounted display has the same projection matrix for left and right eyes.
+		return osg::Matrixd::scale(scale_x, scale_y, 1.0) *
+			projection;
+	}
+	else
+	{
+		// all other display types assume working like a projected power wall
+		// need to shjear projection matrix to account for asymetric frustum due to eye offset.
+		return osg::Matrixd(1.0, 0.0, 0.0, 0.0,
+			0.0, 1.0, 0.0, 0.0,
+			iod / (2.0*sd), 0.0, 1.0, 0.0,
+			0.0, 0.0, 0.0, 1.0) *
+			osg::Matrixd::scale(scale_x, scale_y, 1.0) *
+			projection;
+	}
+    //return _displaySettings.valid() ? _displaySettings->computeLeftEyeProjectionImplementation(projection) : projection;
+	// [END FRANK]
 }
 
 osg::Matrixd SceneView::computeLeftEyeViewImplementation(const osg::Matrixd& view) const
@@ -445,7 +508,51 @@ osg::Matrixd SceneView::computeLeftEyeViewImplementation(const osg::Matrixd& vie
 
 osg::Matrixd SceneView::computeRightEyeProjectionImplementation(const osg::Matrixd& projection) const
 {
-    return _displaySettings.valid() ? _displaySettings->computeRightEyeProjectionImplementation(projection) : projection;
+	// [ADD FRANK]
+	double iod = _displaySettings->getEyeSeparation();
+	double sd = _displaySettings->getScreenDistance();
+	double scale_x = 1.0;
+	double scale_y = 1.0;
+
+	if (_displaySettings->getSplitStereoAutoAdjustAspectRatio())
+	{
+		switch (_displaySettings->getStereoMode())
+		{
+		case(osg::DisplaySettings::HORIZONTAL_SPLIT):
+			scale_x = 2.0;
+			break;
+		case(osg::DisplaySettings::VERTICAL_SPLIT):
+			scale_y = 2.0;
+			break;
+		default:
+			break;
+		}
+	}
+	else
+	{
+		scale_x = _displaySettings->getRightEyeScaleWidth();
+		scale_y = _displaySettings->getRightEyeScaleHeight();
+	}
+
+	if (_displaySettings->getDisplayType() == osg::DisplaySettings::HEAD_MOUNTED_DISPLAY)
+	{
+		// head mounted display has the same projection matrix for left and right eyes.
+		return osg::Matrixd::scale(scale_x, scale_y, 1.0) *
+			projection;
+	}
+	else
+	{
+		// all other display types assume working like a projected power wall
+		// need to shjear projection matrix to account for asymetric frustum due to eye offset.
+		return osg::Matrixd(1.0, 0.0, 0.0, 0.0,
+			0.0, 1.0, 0.0, 0.0,
+			-iod / (2.0*sd), 0.0, 1.0, 0.0,
+			0.0, 0.0, 0.0, 1.0) *
+			osg::Matrixd::scale(scale_x, scale_y, 1.0) *
+			projection;
+	}
+    //return _displaySettings.valid() ? _displaySettings->computeRightEyeProjectionImplementation(projection) : projection;
+	// [END FRANK]
 }
 
 osg::Matrixd SceneView::computeRightEyeViewImplementation(const osg::Matrixd& view) const
@@ -725,11 +832,23 @@ void SceneView::cull()
 
             if (!_cullVisitorLeft.valid()) _cullVisitorLeft = _cullVisitor->clone();
             if (!_stateGraphLeft.valid()) _stateGraphLeft = _stateGraph->cloneType();
-            if (!_renderStageLeft.valid()) _renderStageLeft = osg::clone(_renderStage.get(), osg::CopyOp::DEEP_COPY_ALL);
+			if (!_renderStageLeft.valid())
+			// [ADD FRANK]
+			{
+				_renderStageLeft = dynamic_cast<RenderStage*>(_renderStage->clone(osg::CopyOp::DEEP_COPY_ALL));
+				_renderStageLeft->setCamera(_camera.get());
+			}
+			// [END FRANK]
 
-            if (!_cullVisitorRight.valid()) _cullVisitorRight = _cullVisitor->clone();
+			if (!_cullVisitorRight.valid()) _cullVisitorRight = _cullVisitor->clone();
             if (!_stateGraphRight.valid()) _stateGraphRight = _stateGraph->cloneType();
-            if (!_renderStageRight.valid()) _renderStageRight = osg::clone(_renderStage.get(), osg::CopyOp::DEEP_COPY_ALL);
+            if (!_renderStageRight.valid())
+			// [ADD FRANK]
+			{
+				_renderStageRight = dynamic_cast<RenderStage*>(_renderStage->clone(osg::CopyOp::DEEP_COPY_ALL));
+				_renderStageRight->setCamera(_camera.get());
+			}
+			// [END FRANK]
 
             _cullVisitorLeft->setDatabaseRequestHandler(_cullVisitor->getDatabaseRequestHandler());
             _cullVisitorLeft->setClampProjectionMatrixCallback(_cullVisitor->getClampProjectionMatrixCallback());
@@ -1101,6 +1220,12 @@ void SceneView::draw()
             break;
         case(osg::DisplaySettings::HORIZONTAL_SPLIT):
             {
+
+				// [ADD FRANK]
+				osg::Camera * cam = _renderStageLeft.get()->getCamera();
+				if (!_stereoInitialized || _saveCam != cam) initStereo();
+				// [END FRANK]
+
                 if( 0 == ( _camera->getInheritanceMask() & DRAW_BUFFER) )
                 {
                     _renderStageLeft->setDrawBuffer(_camera->getDrawBuffer());
@@ -1124,33 +1249,60 @@ void SceneView::draw()
                 _renderStageLeft->setColorMask(cmask);
                 _renderStageRight->setColorMask(cmask);
 
-                _localStateSet->setAttribute(_viewportLeft.get());
-                _renderStageLeft->drawPreRenderStages(_renderInfo,previous);
+				// [ADD FRANK]
+				if (!_stereoSlice)
+				{
+					double separation = _displaySettings->getSplitStereoHorizontalSeparation();
+					double  left_half_width = (getViewport()->width() - separation) / 2.0;
+					double right_half_begin = (getViewport()->width() + separation) / 2.0;
+					double right_half_width = getViewport()->width() - right_half_begin;
 
-                _localStateSet->setAttribute(_viewportRight.get());
-                _renderStageRight->drawPreRenderStages(_renderInfo,previous);
+					clearArea(static_cast<int>(getViewport()->x() + left_half_width),
+						static_cast<int>(getViewport()->y()),
+						static_cast<int>(separation),
+						static_cast<int>(getViewport()->height()), _renderStageLeft->getClearColor());
 
-                double separation = _displaySettings->getSplitStereoHorizontalSeparation();
-                if (separation > 0.0)
-                {
-                    double  left_half_width = (getViewport()->width()-separation)/2.0;
+					// Update camera projection
+					osg::Matrixd saveProj = getCamera()->getProjectionMatrix();
 
-                    clearArea(static_cast<int>(getViewport()->x()+left_half_width),
-                              static_cast<int>(getViewport()->y()),
-                              static_cast<int>(separation),
-                              static_cast<int>(getViewport()->height()),_renderStageLeft->getClearColor());
-                }
+					_localStateSet->setAttribute(_viewportLeft.get());
+					getCamera()->setProjectionMatrix(computeLeftEyeProjection(saveProj));
+					_renderStageLeft->setCamera(getCamera());
+					_renderStageLeft->draw(_renderInfo, previous);
 
-                _localStateSet->setAttribute(_viewportLeft.get());
-                _renderStageLeft->draw(_renderInfo,previous);
+					_localStateSet->setAttribute(_viewportRight.get());
+					getCamera()->setProjectionMatrix(computeRightEyeProjection(saveProj));
+					_renderStageRight->setCamera(getCamera());
+					_renderStageRight->draw(_renderInfo, previous);
 
-                _localStateSet->setAttribute(_viewportRight.get());
-                _renderStageRight->draw(_renderInfo,previous);
+					getCamera()->setProjectionMatrix(saveProj);
+				}
+				else
+				{
+					double separation = _displaySettings->getSplitStereoHorizontalSeparation();
+					double  left_half_width = (getViewport()->width() - separation) / 2.0;
+					double right_half_begin = (getViewport()->width() + separation) / 2.0;
+					double right_half_width = getViewport()->width() - right_half_begin;
+
+					clearArea(static_cast<int>(getViewport()->x() + left_half_width),
+						static_cast<int>(getViewport()->y()),
+						static_cast<int>(separation),
+						static_cast<int>(getViewport()->height()), _renderStageLeft->getClearColor());
+
+					// Render the stereo
+					stereoFrame(previous);
+				}
+				// [END FRANK]
 
             }
             break;
         case(osg::DisplaySettings::VERTICAL_SPLIT):
             {
+				// [ADD FRANK]
+				osg::Camera * cam = _renderStageLeft.get()->getCamera();
+				if (!_stereoInitialized || _saveCam != cam) initStereo();
+				// [END FRANK]
+
                 if( 0 == ( _camera->getInheritanceMask() & DRAW_BUFFER) )
                 {
                     _renderStageLeft->setDrawBuffer(_camera->getDrawBuffer());
@@ -1175,29 +1327,51 @@ void SceneView::draw()
                 _renderStageLeft->setColorMask(cmask);
                 _renderStageRight->setColorMask(cmask);
 
-                _localStateSet->setAttribute(_viewportLeft.get());
-                _renderStageLeft->drawPreRenderStages(_renderInfo,previous);
+				// [ADD FRANK]
+				if (!_stereoSlice) 
+				{
+					double separation = _displaySettings->getSplitStereoVerticalSeparation();
+					double bottom_half_height = (getViewport()->height() - separation) / 2.0;
+					double top_half_begin = (getViewport()->height() + separation) / 2.0;
+					double top_half_height = getViewport()->height() - top_half_begin;
 
-                _localStateSet->setAttribute(_viewportRight.get());
-                _renderStageRight->drawPreRenderStages(_renderInfo,previous);
+					clearArea(static_cast<int>(getViewport()->x()),
+						static_cast<int>(getViewport()->y() + bottom_half_height),
+						static_cast<int>(getViewport()->width()),
+						static_cast<int>(separation),
+						_renderStageLeft->getClearColor());
 
-                double separation = _displaySettings->getSplitStereoVerticalSeparation();
-                if (separation > 0.0)
-                {
-                    double bottom_half_height = (getViewport()->height()-separation)/2.0;
+					// Update camera projection
+					osg::Matrixd saveProj = getCamera()->getProjectionMatrix();
 
-                    clearArea(static_cast<int>(getViewport()->x()),
-                              static_cast<int>(getViewport()->y()+bottom_half_height),
-                              static_cast<int>(getViewport()->width()),
-                              static_cast<int>(separation),
-                              _renderStageLeft->getClearColor());
-                }
+					_localStateSet->setAttribute(_viewportLeft.get());
+					getCamera()->setProjectionMatrix(computeLeftEyeProjection(saveProj));
+					_renderStageLeft->setCamera(getCamera());
+					_renderStageLeft->draw(_renderInfo, previous);
 
-                _localStateSet->setAttribute(_viewportLeft.get());
-                _renderStageLeft->draw(_renderInfo,previous);
+					_localStateSet->setAttribute(_viewportRight.get());
+					getCamera()->setProjectionMatrix(computeRightEyeProjection(saveProj));
+					_renderStageRight->setCamera(getCamera());
+					_renderStageRight->draw(_renderInfo, previous);
 
-                _localStateSet->setAttribute(_viewportRight.get());
-                _renderStageRight->draw(_renderInfo,previous);
+					getCamera()->setProjectionMatrix(saveProj);
+				}
+				else 
+				{
+					double separation = _displaySettings->getSplitStereoVerticalSeparation();
+					double bottom_half_height = (getViewport()->height() - separation) / 2.0;
+					double top_half_begin = (getViewport()->height() + separation) / 2.0;
+					double top_half_height = getViewport()->height() - top_half_begin;
+
+					clearArea(static_cast<int>(getViewport()->x()),
+						static_cast<int>(getViewport()->y() + bottom_half_height),
+						static_cast<int>(getViewport()->width()),
+						static_cast<int>(separation),
+						_renderStageLeft->getClearColor());
+
+					stereoFrame(previous);
+				}
+				// [END FRANK]
             }
             break;
         case(osg::DisplaySettings::RIGHT_EYE):
@@ -1576,3 +1750,131 @@ void SceneView::clearReferencesToDependentCameras()
     if (_renderStageLeft.valid()) _renderStageLeft->clearReferencesToDependentCameras();
     if (_renderStageRight.valid()) _renderStageRight->clearReferencesToDependentCameras();
 }
+
+// [ADD FRANK]
+void SceneView::resetStereo()
+{
+	_stereoInitialized = false;
+	_stereoSlice = true;
+	_currentSlice = 0;
+	_saveCam = NULL;
+	_stereoTexture[0] = NULL;
+	_stereoTexture[1] = NULL;
+}
+
+void SceneView::initStereo()
+{
+	if (!_stereoSlice) return;
+
+	// Set camera rendering to Frame Buffer (like that the render stage will automatically copy in a texture)
+	osg::Camera * cam = _renderStageLeft.get()->getCamera();
+	if (cam) cam->setRenderTargetImplementation(osg::Camera::FRAME_BUFFER);
+
+	cam = _renderStageRight.get()->getCamera();
+	if (cam) cam->setRenderTargetImplementation(osg::Camera::FRAME_BUFFER);
+
+	// Allocate texture
+	for (int id = 0; id < 2; id++) {
+		if (_stereoTexture[id] == NULL) _stereoTexture[id] = new osg::Texture2D();
+		_stereoTexture[id]->setTextureSize(getViewport()->width(), getViewport()->height());
+	}
+
+	// Set texture to each render target
+	// [deprecated] no longer using the RTT as with FRAME_BUFFER camera rendering is kept
+#if 0
+	_renderStageRight.get()->setTexture(_stereoTexture[1]);
+	_renderStageLeft.get()->setTexture(_stereoTexture[0]);
+#endif
+
+	_stereoInitialized = true;
+	_saveCam = cam;
+}
+
+void SceneView::stereoFrame(osgUtil::RenderLeaf * previous)
+{
+	// Update camera projection
+	osg::Matrixd saveProj = getCamera()->getProjectionMatrix();
+
+	if (_currentSlice == -1 || _currentSlice == 0) {
+		_localStateSet->setAttribute(_viewportLeft.get());
+		getCamera()->setProjectionMatrix(computeLeftEyeProjection(saveProj));
+		_renderStageLeft->setCamera(getCamera());
+		_renderStageLeft->draw(_renderInfo, previous);
+	}
+
+	if (_currentSlice == -1 || _currentSlice == 1) {
+		_localStateSet->setAttribute(_viewportRight.get());
+		getCamera()->setProjectionMatrix(computeRightEyeProjection(saveProj));
+		_renderStageRight->setCamera(getCamera());
+		_renderStageRight->draw(_renderInfo, previous);
+	}
+
+	// Restore camera
+	getCamera()->setProjectionMatrix(saveProj);
+
+	// if synchronizing, we have to make sure for both camera we are rendering only the same camera
+	// 
+	if (osg::GraphicsContext::_enterStereoLoop) {
+		osg::GraphicsContext::_stereoCamera--;
+		if (osg::GraphicsContext::_stereoCamera <= 0) {
+			if (_currentSlice == -1 || _currentSlice == 0) _currentSlice = 1;
+			else _currentSlice = 0;
+			osg::GraphicsContext::_stereoCamera = 2;
+		}
+	}
+}
+
+void SceneView::renderStereoHorizontal(osg::State * state)
+{
+	return;
+
+	double separation = _displaySettings->getSplitStereoHorizontalSeparation();
+	double half_width = (getViewport()->width()) / 2.0;
+	double width = getViewport()->width();
+	double height = getViewport()->height();
+	double x = getViewport()->x();
+	double y = getViewport()->y();
+
+	glPushMatrix();
+
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	glOrtho(getViewport()->x(), getViewport()->width(), getViewport()->y(), getViewport()->height(), -1.0, 1.0);
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+
+	glEnable(GL_TEXTURE_2D);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+
+	// Render left view
+	_stereoTexture[0]->apply(*state);
+	glBegin(GL_QUADS);
+	glTexCoord2f(0.0, 0.0);
+	glVertex3f(x, y, 0.0);
+	glTexCoord2f(1, 0.0);
+	glVertex3f(half_width, y, 0.0);
+	glTexCoord2f(1, 1);
+	glVertex3f(half_width, height, 0.0);
+	glTexCoord2f(0.0, 1);
+	glVertex3f(x, height, 0.0);
+	glEnd();
+
+	// Render right view
+	_stereoTexture[1]->apply(*state);
+	glBegin(GL_QUADS);
+	glTexCoord2f(0, 0.0);
+	glVertex3f(half_width, y, 0.0);
+	glTexCoord2f(1, 0.0);
+	glVertex3f(width, y, 0.0);
+	glTexCoord2f(1, 1);
+	glVertex3f(width, height, 0.0);
+	glTexCoord2f(0, 1);
+	glVertex3f(half_width, height, 0.0);
+	glEnd();
+
+	glPopMatrix();
+}
+// [END FRANK]

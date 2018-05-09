@@ -36,6 +36,19 @@ namespace osgUtil {
 class OSGUTIL_EXPORT SceneView : public osg::Object, public osg::CullSettings
 {
     public:
+		// [ADD FRANK]
+		bool			_stereoInitialized;
+		static bool		_stereoSlice;
+		int				_currentSlice;
+		osg::Texture2D* _stereoTexture[2];
+		osg::Camera *	_saveCam;
+		
+		void resetStereo();
+		void initStereo();
+		void freeStereo();
+		void stereoFrame(osgUtil::RenderLeaf * previous);
+		void renderStereoHorizontal(osg::State * state);
+		// [END FRANK]
 
         /** Construct a default scene view.*/
         SceneView(osg::DisplaySettings* ds=NULL);

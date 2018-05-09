@@ -29,6 +29,10 @@ class Camera;
 class OSG_EXPORT GraphicsContext : public Object
 {
     public:
+		// [ADD FRANK]
+		static bool		_enterStereoLoop;
+		static int		_stereoCamera;
+		// [END FRANK]
 
         struct OSG_EXPORT ScreenIdentifier
         {

@@ -1578,6 +1578,10 @@ void State::setUpVertexAttribAlias(VertexAttribAlias& alias, GLuint location, co
     // OSG_NOTICE<<"State::setUpVertexAttribAlias("<<location<<" "<<glName<<" "<<osgName<<")"<<std::endl;
 }
 
+// [ADD FRANK]
+#if 0
+// [END FRANK]
+
 void State::applyProjectionMatrix(const osg::RefMatrix* matrix)
 {
     if (_projection!=matrix)
@@ -1603,6 +1607,10 @@ void State::applyProjectionMatrix(const osg::RefMatrix* matrix)
 #endif
     }
 }
+
+// [ADD FRANK]
+#endif
+// [END FRANK]
 
 void State::loadModelViewMatrix()
 {

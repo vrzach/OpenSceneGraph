@@ -256,7 +256,34 @@ class OSG_EXPORT State : public Referenced
         inline const osg::Matrix& getInitialViewMatrix() const { return *_initialViewMatrix; }
         inline const osg::Matrix& getInitialInverseViewMatrix() const { return _initialInverseViewMatrix; }
 
+		// [ADD FRANK]
+#if 1
+        inline void applyProjectionMatrix(const osg::RefMatrix* matrix)
+        {
+            if (_projection!=matrix)
+            {
+                glMatrixMode( GL_PROJECTION );
+                if (matrix)
+                {
+                    _projection=matrix;
+                    glLoadMatrix(matrix->ptr());
+                }
+                else
+                {
+                    _projection=_identity;
+                    glLoadIdentity();
+                }
+                glMatrixMode( GL_MODELVIEW );
+            }
+        }
+#else
+		// [END FRANK]
+
         void applyProjectionMatrix(const osg::RefMatrix* matrix);
+		
+		// [ADD FRANK]
+#endif
+		// [END FRANK]
 
         inline const osg::Matrix& getProjectionMatrix() const { return *_projection; }
 

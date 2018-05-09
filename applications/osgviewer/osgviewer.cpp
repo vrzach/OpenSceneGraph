@@ -172,8 +172,16 @@ int main(int argc, char** argv)
 
     viewer.setSceneData(loadedModel);
 
-    viewer.realize();
-
-    return viewer.run();
+	// [ADD FRANK]
+	viewer.setThreadingModel(osgViewer::ViewerBase::ThreadingModel::SingleThreaded);
+	// [END FRANK]
+    
+	viewer.realize();
+	
+	// [ADD FRANK]
+	osgUtil::SceneView::_stereoSlice = true;	// Draw one side per frame
+	// [END FRANK]
+    
+	return viewer.run();
 
 }

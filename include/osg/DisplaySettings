@@ -384,6 +384,20 @@ class OSG_EXPORT DisplaySettings : public osg::Referenced
         Object* getObject(const std::string& name) { ObjectMap::iterator itr = _objectMap.find(name); return itr!=_objectMap.end() ? itr->second.get() : 0; }
         const Object* getObject(const std::string& name) const { ObjectMap::const_iterator itr = _objectMap.find(name); return itr!=_objectMap.end() ? itr->second.get() : 0; }
 
+		// [START FRANK]
+		void setLeftEyeScaleWidth(float val) { _LeftEyeScaleWidth = val; }
+        float getLeftEyeScaleWidth() const { return _LeftEyeScaleWidth; }
+        
+        void setLeftEyeScaleHeight(float val) { _LeftEyeScaleHeight = val; }
+        float getLeftEyeScaleHeight() const { return _LeftEyeScaleHeight; }
+        
+        void setRightEyeScaleWidth(float val) { _RightEyeScaleWidth = val; }
+        float getRightEyeScaleWidth() const { return _RightEyeScaleWidth; }
+        
+        void setRightEyeScaleHeight(float val) { _RightEyeScaleHeight = val; }
+        float getRightEyeScaleHeight() const { return _RightEyeScaleHeight; }
+		// [END FRANK]
+
 protected:
 
         virtual ~DisplaySettings();
@@ -460,6 +474,13 @@ protected:
         mutable OpenThreads::Mutex      _valueMapMutex;
         mutable ValueMap                _valueMap;
         mutable ObjectMap               _objectMap;
+
+		// [START FRANK]
+		float							_LeftEyeScaleWidth;
+		float							_LeftEyeScaleHeight;
+		float							_RightEyeScaleWidth;
+		float							_RightEyeScaleHeight;
+		// [END FRANK]
 
 };
 

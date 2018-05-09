@@ -138,9 +138,15 @@ lib3ds_chunk_write_end(Lib3dsChunk *c, Lib3dsIo *io) {
 
 void
 lib3ds_chunk_unknown(uint16_t chunk, Lib3dsIo *io) {
+// [ADD FRANK]
+#if DEBUG
+// [END FRANK]
     if (io->log_func) {
         lib3ds_io_log(io, LIB3DS_LOG_WARN, "Unknown Chunk: %s (0x%X)", lib3ds_chunk_name(chunk), chunk);
     }
+// [ADD FRANK]
+#endif
+// [END FRANK]
 }
 
 

@@ -959,10 +959,35 @@ void CompositeViewer::eventTraversal()
     getContexts(contexts);
 
     // set done if there are no windows
-    checkWindowStatus(contexts);
-    if (_done) return;
+	// [ADD FRANK]
+    //checkWindowStatus(contexts);
+    //if (_done) return;
+	// [END FRANK]
 
     osgGA::EventQueue::Events all_events;
+
+	// [ADD FRANK]
+	Scenes scenes;
+	getScenes(scenes);
+
+	osgViewer::View* masterView = getViewWithFocus() ? getViewWithFocus() : _views[0].get();
+
+	osg::Camera* masterCamera = masterView->getCamera();
+	osgGA::GUIEventAdapter* eventState = masterView->getEventQueue()->getCurrentEventState();
+	osg::Matrix masterCameraVPW = masterCamera->getViewMatrix() * masterCamera->getProjectionMatrix();
+	if (masterCamera->getViewport())
+	{
+		osg::Viewport* viewport = masterCamera->getViewport();
+		masterCameraVPW *= viewport->computeWindowMatrix();
+	}
+
+
+	bool pointerEvent = false;
+
+	float x;//= event->getX();
+	float y;// = event->getY();
+	// [END FRANK]
+
 
     for(Contexts::iterator citr = contexts.begin();
         citr != contexts.end();
@@ -1008,6 +1033,14 @@ void CompositeViewer::eventTraversal()
 
         EventClassification classification = EVENT_FOR_ALL_VIEWS;
 
+		// [ADD FRANK]
+		osgViewer::GraphicsWindow* gw = (osgViewer::GraphicsWindow*)event->getGraphicsContext();
+
+		pointerEvent = false;
+		x = event->getX();
+		y = event->getY();
+		// [END FRANK]
+
         switch(event->getEventType())
         {
             case(osgGA::GUIEventAdapter::CLOSE_WINDOW):
@@ -1030,6 +1063,74 @@ void CompositeViewer::eventTraversal()
             case(osgGA::GUIEventAdapter::RELEASE):
             case(osgGA::GUIEventAdapter::DOUBLECLICK):
             case(osgGA::GUIEventAdapter::MOVE):
+			// [ADD FRANK]
+			{
+				pointerEvent = true;
+
+				if (event->getEventType() != osgGA::GUIEventAdapter::DRAG || !getCameraWithFocus())
+				{
+
+					if (event->getMouseYOrientation() != osgGA::GUIEventAdapter::Y_INCREASING_UPWARDS)
+					{
+						event->setY((event->getYmax() - event->getY()) + event->getYmin());
+						event->setMouseYOrientation(osgGA::GUIEventAdapter::Y_INCREASING_UPWARDS);
+					}
+					osg::GraphicsContext::Cameras& cameras = gw->getCameras();
+					for (osg::GraphicsContext::Cameras::iterator citr = cameras.begin();
+						citr != cameras.end();
+						++citr)
+					{
+						osg::Camera* camera = *citr;
+						if (camera->getView() &&
+							camera->getAllowEventFocus() &&
+							camera->getRenderTargetImplementation() == osg::Camera::FRAME_BUFFER)
+						{
+							osg::Viewport* viewport = camera ? camera->getViewport() : 0;
+							if (viewport &&
+								x >= viewport->x() && y >= viewport->y() &&
+								x <= (viewport->x() + viewport->width()) && y <= (viewport->y() + viewport->height()))
+							{
+								setCameraWithFocus(camera);
+
+								// If this camera is not a slave camera
+								if (camera->getView()->getCamera() == camera)
+								{
+									eventState->setGraphicsContext(gw);
+									eventState->setInputRange(viewport->x(), viewport->y(),
+										viewport->x() + viewport->width(),
+										viewport->y() + viewport->height());
+
+								}
+								else
+								{
+									eventState->setInputRange(-1.0, -1.0, 1.0, 1.0);
+								}
+
+								if (getViewWithFocus() != masterView)
+								{
+									// need to reset the masterView
+									if (!osgUtil::SceneView::_stereoSlice) 
+									{
+										masterView = getViewWithFocus();
+										masterCamera = masterView->getCamera();
+										eventState = masterView->getEventQueue()->getCurrentEventState();
+										masterCameraVPW = masterCamera->getViewMatrix() * masterCamera->getProjectionMatrix();
+
+										if (masterCamera->getViewport())
+										{
+											osg::Viewport* viewport = masterCamera->getViewport();
+											masterCameraVPW *= viewport->computeWindowMatrix();
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+
+				break;
+			}
+			// [END FRANK]
             case(osgGA::GUIEventAdapter::DRAG):
             case(osgGA::GUIEventAdapter::SCROLL):
             {
