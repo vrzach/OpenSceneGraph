@@ -65,6 +65,7 @@ PlatformSpecifics/Windows/*.rc
 # Visual studio - project files
 *.suo
 *.vcxproj.user
+.vs/
 
 # Visual Studio - Build Results
 [Dd]ebug/
