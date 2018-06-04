@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgFX\AnisotropicLighting.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgFX\BumpMapping.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgFX\Cartoon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgFX\Effect.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgFX\MultiTextureControl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgFX\Outline.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgFX\Registry.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgFX\Scribe.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgFX\SpecularHighlights.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgFX\Technique.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgFX\Validator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgFX\Version.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgFX\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgFX\AnisotropicLighting">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgFX\BumpMapping">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgFX\Cartoon">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgFX\Effect">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgFX\Export">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgFX\MultiTextureControl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgFX\Outline">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgFX\Registry">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgFX\Scribe">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgFX\SpecularHighlights">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgFX\Technique">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgFX\Validator">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgFX\Version">
+      <Filter>Header Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\PlatformSpecifics\Windows\OpenSceneGraphVersionInfo.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{572A7C32-213F-3C5C-8275-47042AE3BD21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{A1BA5AA6-FA74-38C4-89CB-D23868A493DF}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

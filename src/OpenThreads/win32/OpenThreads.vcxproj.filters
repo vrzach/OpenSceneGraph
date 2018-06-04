@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\OpenThreads\win32\WIN32Condition.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\OpenThreads\win32\Win32Mutex.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\OpenThreads\win32\Win32Thread.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\OpenThreads\win32\Win32ThreadBarrier.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\OpenThreads\common\Version.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\OpenThreads\common\Atomic.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\OpenThreads\Atomic">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\OpenThreads\Affinity">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\OpenThreads\Barrier">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\OpenThreads\Block">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\OpenThreads\Condition">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\OpenThreads\Exports">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\OpenThreads\Mutex">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\OpenThreads\ReadWriteMutex">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\OpenThreads\ReentrantMutex">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\OpenThreads\ScopedLock">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\OpenThreads\Thread">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\OpenThreads\Version">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\OpenThreads\Config">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\OpenThreads\win32\HandleHolder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\OpenThreads\win32\Win32BarrierPrivateData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\OpenThreads\win32\Win32ConditionPrivateData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\OpenThreads\win32\Win32MutexPrivateData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\OpenThreads\win32\Win32ThreadPrivateData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\OpenThreads\win32\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\PlatformSpecifics\Windows\OpenThreadsVersionInfo.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{572A7C32-213F-3C5C-8275-47042AE3BD21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{A1BA5AA6-FA74-38C4-89CB-D23868A493DF}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

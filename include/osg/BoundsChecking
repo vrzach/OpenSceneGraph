@@ -55,13 +55,17 @@ inline void clampBetweenRange(T& value,const T minValue,const T maxValue,const c
 {
     if (value<minValue)
     {
+#if _DEBUG
         notify(WARN) << "Warning: "<<valueName<<" of "<<value<<" is below permitted minimum, clamping to "<<minValue<<"."<< std::endl;
+#endif
         value = minValue;
     }
     else
     if (value>maxValue)
     {
+#if _DEBUG
         notify(WARN) << "Warning: "<<valueName<<" of "<<value<<" is above permitted maximum, clamping to "<<maxValue<<"."<< std::endl;
+#endif
         value = maxValue;
     }
 

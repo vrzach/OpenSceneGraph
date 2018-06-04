@@ -60,7 +60,9 @@ void user_error_fn(png_structp /*png_ptr*/, png_const_charp error_msg)
 
 void user_warning_fn(png_structp /*png_ptr*/, png_const_charp warning_msg)
 {
+#if _DEBUG
     OSG_WARN << "PNG lib warning : " << warning_msg << std::endl;
+#endif
 }
 
 void png_read_istream(png_structp png_ptr, png_bytep data, png_size_t length)

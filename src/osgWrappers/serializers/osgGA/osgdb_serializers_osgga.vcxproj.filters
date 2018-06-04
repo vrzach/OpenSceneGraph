@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgWrappers\serializers\osgGA\AnimationPathManipulator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgWrappers\serializers\osgGA\DriveManipulator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgWrappers\serializers\osgGA\EventVisitor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgWrappers\serializers\osgGA\FlightManipulator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgWrappers\serializers\osgGA\GUIEventAdapter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgWrappers\serializers\osgGA\GUIEventHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgWrappers\serializers\osgGA\KeySwitchMatrixManipulator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgWrappers\serializers\osgGA\MultiTouchTrackballManipulator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgWrappers\serializers\osgGA\StateSetManipulator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgWrappers\serializers\osgGA\TerrainManipulator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgWrappers\serializers\osgGA\TouchData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgWrappers\serializers\osgGA\TrackballManipulator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgWrappers\serializers\osgGA\UFOManipulator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgWrappers\serializers\osgGA\Widget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgWrappers\serializers\osgGA\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\PlatformSpecifics\Windows\OpenSceneGraphVersionInfo.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{A1BA5AA6-FA74-38C4-89CB-D23868A493DF}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

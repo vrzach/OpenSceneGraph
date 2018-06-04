@@ -767,7 +767,9 @@ void StateSet::setGlobalDefaults()
     }
     else
     {
+#if _DEBUG
         OSG_NOTICE<<"void StateSet::setGlobalDefaults() ShaderPipeline disabled."<<std::endl;
+#endif
 
         OSG_INFO<<"   StateSet::setGlobalDefaults() Setting up GL2 compatible shaders"<<std::endl;
 

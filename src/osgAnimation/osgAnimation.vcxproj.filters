@@ -1,0 +1,275 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgAnimation\Action.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgAnimation\ActionAnimation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgAnimation\ActionBlendIn.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgAnimation\ActionBlendOut.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgAnimation\ActionCallback.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgAnimation\ActionStripAnimation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgAnimation\ActionVisitor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgAnimation\Animation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgAnimation\AnimationManagerBase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgAnimation\BasicAnimationManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgAnimation\Bone.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgAnimation\BoneMapVisitor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgAnimation\Channel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgAnimation\LinkVisitor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgAnimation\MorphGeometry.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgAnimation\RigGeometry.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgAnimation\RigTransformHardware.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgAnimation\RigTransformSoftware.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgAnimation\MorphTransformHardware.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgAnimation\MorphTransformSoftware.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgAnimation\Skeleton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgAnimation\StackedMatrixElement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgAnimation\StackedQuaternionElement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgAnimation\StackedRotateAxisElement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgAnimation\StackedScaleElement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgAnimation\StackedTransform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgAnimation\StackedTranslateElement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgAnimation\StatsVisitor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgAnimation\StatsHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgAnimation\Target.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgAnimation\TimelineAnimationManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgAnimation\Timeline.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgAnimation\UpdateBone.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgAnimation\UpdateMaterial.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgAnimation\UpdateMatrixTransform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgAnimation\VertexInfluence.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\src\osgAnimation\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgAnimation\Action">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgAnimation\ActionAnimation">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgAnimation\ActionBlendIn">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgAnimation\ActionBlendOut">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgAnimation\ActionCallback">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgAnimation\ActionStripAnimation">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgAnimation\ActionVisitor">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgAnimation\Animation">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgAnimation\AnimationManagerBase">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgAnimation\AnimationUpdateCallback">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgAnimation\BasicAnimationManager">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgAnimation\Bone">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgAnimation\BoneMapVisitor">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgAnimation\Channel">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgAnimation\CubicBezier">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgAnimation\EaseMotion">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgAnimation\Export">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgAnimation\FrameAction">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgAnimation\Interpolator">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgAnimation\Keyframe">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgAnimation\LinkVisitor">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgAnimation\MorphGeometry">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgAnimation\RigGeometry">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgAnimation\RigTransform">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgAnimation\RigTransformHardware">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgAnimation\RigTransformSoftware">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgAnimation\MorphTransformHardware">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgAnimation\MorphTransformSoftware">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgAnimation\Sampler">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgAnimation\Skeleton">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgAnimation\StackedMatrixElement">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgAnimation\StackedQuaternionElement">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgAnimation\StackedRotateAxisElement">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgAnimation\StackedScaleElement">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgAnimation\StackedTransformElement">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgAnimation\StackedTranslateElement">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgAnimation\StackedTransform">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgAnimation\StatsVisitor">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgAnimation\StatsHandler">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgAnimation\Target">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgAnimation\Timeline">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgAnimation\TimelineAnimationManager">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgAnimation\UpdateBone">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgAnimation\UpdateMaterial">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgAnimation\UpdateMatrixTransform">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgAnimation\UpdateUniform">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgAnimation\Vec3Packed">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\include\osgAnimation\VertexInfluence">
+      <Filter>Header Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="C:\OpenSceneGraph-3.5\OpenSceneGraph\PlatformSpecifics\Windows\OpenSceneGraphVersionInfo.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{572A7C32-213F-3C5C-8275-47042AE3BD21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{A1BA5AA6-FA74-38C4-89CB-D23868A493DF}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
