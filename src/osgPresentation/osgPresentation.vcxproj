@@ -56,13 +56,13 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\OpenSceneGraph-3.5\OpenSceneGraph\bin\debug\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)bin\$(Configuration)\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">osgPresentation.dir\Debug\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">osg160-osgPresentationd</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.dll</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\OpenSceneGraph-3.5\OpenSceneGraph\bin\release\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)bin\$(Configuration)\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">osgPresentation.dir\Release\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">osg160-osgPresentation</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.dll</TargetExt>
@@ -83,7 +83,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\OpenSceneGraph-3.5\OpenSceneGraph\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)include;$(SolutionDir)..\3rdParty\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>Debug/</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <CompileAs>CompileAsCpp</CompileAs>
@@ -112,12 +112,12 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\..\lib\osgUId.lib;..\..\lib\osgWidgetd.lib;..\..\lib\osgManipulatord.lib;..\..\lib\osgVolumed.lib;..\..\lib\osgFXd.lib;opengl32.lib;..\..\lib\osgViewerd.lib;..\..\lib\osgTextd.lib;..\..\lib\osgGAd.lib;..\..\lib\osgDBd.lib;..\..\lib\osgUtild.lib;C:\OpenSceneGraph-3.5\3rdParty\lib\zlibd.lib;..\..\lib\osgd.lib;..\..\lib\OpenThreadsd.lib;opengl32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>osgUId.lib;osgWidgetd.lib;osgManipulatord.lib;osgVolumed.lib;osgFXd.lib;opengl32.lib;osgViewerd.lib;osgTextd.lib;osgGAd.lib;osgDBd.lib;osgUtild.lib;zlibd.lib;osgd.lib;OpenThreadsd.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)lib\$(Configuration);$(SolutionDir)..\3rdParty\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/OpenSceneGraph-3.5/OpenSceneGraph/lib/osgPresentationd.lib</ImportLibrary>
+      <ImportLibrary>$(SolutionDir)lib\$(Configuration)\$(ProjectName)d.lib</ImportLibrary>
       <ProgramDataBaseFile>$(OutDir)$(TargetName).pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
     </Link>
@@ -127,7 +127,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\OpenSceneGraph-3.5\OpenSceneGraph\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)include;$(SolutionDir)..\3rdParty\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>Release/</AssemblerListingLocation>
       <CompileAs>CompileAsCpp</CompileAs>
       <DisableSpecificWarnings>4589;4706;4127;4100</DisableSpecificWarnings>
@@ -156,12 +156,12 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\..\lib\osgUI.lib;..\..\lib\osgWidget.lib;..\..\lib\osgManipulator.lib;..\..\lib\osgVolume.lib;..\..\lib\osgFX.lib;opengl32.lib;..\..\lib\osgViewer.lib;..\..\lib\osgText.lib;..\..\lib\osgGA.lib;..\..\lib\osgDB.lib;..\..\lib\osgUtil.lib;C:\OpenSceneGraph-3.5\3rdParty\lib\zlib.lib;..\..\lib\osg.lib;..\..\lib\OpenThreads.lib;opengl32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>osgUI.lib;osgWidget.lib;osgManipulator.lib;osgVolume.lib;osgFX.lib;opengl32.lib;osgViewer.lib;osgText.lib;osgGA.lib;osgDB.lib;osgUtil.lib;zlib.lib;osg.lib;OpenThreads.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)lib\$(Configuration);$(SolutionDir)..\3rdParty\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>DebugFull</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/OpenSceneGraph-3.5/OpenSceneGraph/lib/osgPresentation.lib</ImportLibrary>
+      <ImportLibrary>$(SolutionDir)lib\$(Configuration)\$(ProjectName).lib</ImportLibrary>
       <ProgramDataBaseFile>$(OutDir)$(TargetName).pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
     </Link>
@@ -171,7 +171,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\OpenSceneGraph-3.5\OpenSceneGraph\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)include;$(SolutionDir)..\3rdParty\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>MinSizeRel/</AssemblerListingLocation>
       <CompileAs>CompileAsCpp</CompileAs>
       <DisableSpecificWarnings>4589;4706;4127;4100</DisableSpecificWarnings>
@@ -201,7 +201,7 @@
     </Midl>
     <Link>
       <AdditionalDependencies>..\..\lib\osgUIs.lib;..\..\lib\osgWidgets.lib;..\..\lib\osgManipulators.lib;..\..\lib\osgVolumes.lib;..\..\lib\osgFXs.lib;opengl32.lib;..\..\lib\osgViewers.lib;..\..\lib\osgTexts.lib;..\..\lib\osgGAs.lib;..\..\lib\osgDBs.lib;..\..\lib\osgUtils.lib;C:\OpenSceneGraph-3.5\3rdParty\lib\zlib.lib;..\..\lib\osgs.lib;..\..\lib\OpenThreadss.lib;opengl32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)lib\$(Configuration);$(SolutionDir)..\3rdParty\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
@@ -215,7 +215,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\OpenSceneGraph-3.5\OpenSceneGraph\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)include;$(SolutionDir)..\3rdParty\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>RelWithDebInfo/</AssemblerListingLocation>
       <CompileAs>CompileAsCpp</CompileAs>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -244,7 +244,7 @@
     </Midl>
     <Link>
       <AdditionalDependencies>..\..\lib\osgUIrd.lib;..\..\lib\osgWidgetrd.lib;..\..\lib\osgManipulatorrd.lib;..\..\lib\osgVolumerd.lib;..\..\lib\osgFXrd.lib;opengl32.lib;..\..\lib\osgViewerrd.lib;..\..\lib\osgTextrd.lib;..\..\lib\osgGArd.lib;..\..\lib\osgDBrd.lib;..\..\lib\osgUtilrd.lib;C:\OpenSceneGraph-3.5\3rdParty\lib\zlib.lib;..\..\lib\osgrd.lib;..\..\lib\OpenThreadsrd.lib;opengl32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)lib\$(Configuration);$(SolutionDir)..\3rdParty\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
